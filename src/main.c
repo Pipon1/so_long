@@ -19,13 +19,18 @@ int	ft_move(int keycode, t_win *pl)
 	void	*ptrimg;
 	int		w;
 	int		h;
+	void	*primg2;
 
+	primg2 = mlx_xpm_file_to_image(pl->mlx, "./floor.xpm", &w, &h);
 	ptrimg = mlx_xpm_file_to_image(pl->mlx, "./player.xpm", &w, &h);
 	if (keycode == 124)
-	{
-		pl->charx += 10;
-		mlx_put_image_to_window(pl->mlx, pl->win, ptrimg, pl->charx, pl->chary);
-	}
+		move_right(pl, ptrimg, primg2);
+	if (keycode == 123)
+		move_left(pl, ptrimg, primg2);
+	if (keycode == 126)
+		move_up(pl, ptrimg, primg2);
+	if (keycode == 125)
+		move_down(pl, ptrimg, primg2);
 	return (0);
 }
 

@@ -28,5 +28,8 @@ typedef struct s_win
 	void	*imgp;
 }				t_win;
 
-
+void	move_right(t_win *pl, void *pla, void *flo);
+void	move_left(t_win *pl, void *pla, void *flo);
+void	move_up(t_win *pl, void *pla, void *flo);
+void	move_down(t_win *pl, void *pla, void *flo);
 #endif
