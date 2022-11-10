@@ -26,15 +26,13 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 
 $(NAME): $(OBJ)
 	make -C $(LIBFT)
-	$(CC) $(OBJ) -L$(LIBFT) -lft -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
-	mv mlx/libmlx.dylib ../so_long
+	$(CC) $(OBJ) -L$(LIBFT) -lft -L. -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 clean: 
 	rm -rf $(OBJ_DIR)
 
 fclean: clean
 	rm -f $(NAME)
-	mv libmlx.dylib mlx/
 
 re: fclean all
 

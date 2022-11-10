@@ -12,14 +12,21 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-typedef struct s_image {
+typedef struct s_image
+{
 	void	*img;
-	int		img_h;
-	int		imh_w;
+	int		imh;
+	int		imw;
 }				t_image;
 
-typedef struct s_win {
+typedef struct s_win
+{
 	void	*mlx;
 	void	*win;
+	int		charx;
+	int		chary;
+	void	*imgp;
 }				t_win;
+
+
 #endif
