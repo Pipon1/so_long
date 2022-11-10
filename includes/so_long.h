@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 #ifndef SO_LONG_H
 # define SO_LONG_H
+# include	<mlx.h>
 
 typedef struct s_image
 {
@@ -32,4 +33,5 @@ void	move_right(t_win *pl, void *pla, void *flo);
 void	move_left(t_win *pl, void *pla, void *flo);
 void	move_up(t_win *pl, void *pla, void *flo);
 void	move_down(t_win *pl, void *pla, void *flo);
+void	mapinit(t_win *pl);
 #endif

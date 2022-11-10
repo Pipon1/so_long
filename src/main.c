@@ -21,8 +21,8 @@ int	ft_move(int keycode, t_win *pl)
 	int		h;
 	void	*primg2;
 
-	primg2 = mlx_xpm_file_to_image(pl->mlx, "./floor.xpm", &w, &h);
-	ptrimg = mlx_xpm_file_to_image(pl->mlx, "./player.xpm", &w, &h);
+	primg2 = mlx_xpm_file_to_image(pl->mlx, "./img/floor.xpm", &w, &h);
+	ptrimg = mlx_xpm_file_to_image(pl->mlx, "./img/player.xpm", &w, &h);
 	if (keycode == 124)
 		move_right(pl, ptrimg, primg2);
 	if (keycode == 123)
@@ -53,7 +53,8 @@ int	main(void)
 	win.charx = 0;
 	win.chary = 0;
 	win.mlx = mlx_init();
-	win.win = mlx_new_window(win.mlx, 500, 500, "So_Long");
+	win.win = mlx_new_window(win.mlx, 512, 512, "So_Long");
+	mapinit(&win);
 	mlx_hook(win.win, 2, 0, ft_close, &win);
 	mlx_key_hook(win.win, ft_move, &win);
 	mlx_loop(win.mlx);

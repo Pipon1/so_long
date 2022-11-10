@@ -17,27 +17,27 @@
 void	move_right(t_win *pl, void *pla, void *flo)
 {
 	mlx_put_image_to_window(pl->mlx, pl->win, flo, pl->charx, pl->chary);
-	pl->charx += 10;
+	pl->charx += 16;
 	mlx_put_image_to_window(pl->mlx, pl->win, pla, pl->charx, pl->chary);
 }
 
 void	move_left(t_win *pl, void *pla, void *flo)
 {
 	mlx_put_image_to_window(pl->mlx, pl->win, flo, pl->charx, pl->chary);
-	pl->charx -= 10;
+	pl->charx -= 16;
 	mlx_put_image_to_window(pl->mlx, pl->win, pla, pl->charx, pl->chary);
 }
 
 void	move_up(t_win *pl, void *pla, void *flo)
 {
 	mlx_put_image_to_window(pl->mlx, pl->win, flo, pl->charx, pl->chary);
-	pl->chary -= 10;
+	pl->chary -= 16;
 	mlx_put_image_to_window(pl->mlx, pl->win, pla, pl->charx, pl->chary);
 }
 
 void	move_down(t_win *pl, void *pla, void *flo)
 {
 	mlx_put_image_to_window(pl->mlx, pl->win, flo, pl->charx, pl->chary);
-	pl->chary += 10;
+	pl->chary += 16;
 	mlx_put_image_to_window(pl->mlx, pl->win, pla, pl->charx, pl->chary);
 }

@@ -12,7 +12,7 @@
 NAME := so_long
 SRC_DIR := src/
 OBJ_DIR := obj/
-SRC_FILES := main movement
+SRC_FILES := main movement map
 LIBFT := libft
 SRC := $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ := $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
