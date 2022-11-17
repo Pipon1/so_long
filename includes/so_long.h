@@ -27,11 +27,13 @@ typedef struct s_win
 	int		charx;
 	int		chary;
 	void	*imgp;
+	char	**map;
 }				t_win;
 
 void	move_right(t_win *pl, void *pla, void *flo);
 void	move_left(t_win *pl, void *pla, void *flo);
 void	move_up(t_win *pl, void *pla, void *flo);
 void	move_down(t_win *pl, void *pla, void *flo);
-void	mapinit(t_win *pl);
+char	**mapinit(t_win *pl);
+int		collision(t_win *pl, int d);
 #endif
