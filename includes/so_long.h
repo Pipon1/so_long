@@ -17,7 +17,7 @@ typedef struct s_image
 {
 	void	*imgp;
 	void	*imgf;
-	void	*imge;
+	void	*ig;
 	void	*imgc;
 	void	*imgw;
 }				t_image;
@@ -36,12 +36,15 @@ typedef struct s_win
 }				t_win;
 
 void	move_right(t_win *pl, void *pla, void *flo);
-void	move_left(t_win *pl, void *pla, void *flo);
-void	move_up(t_win *pl, void *pla, void *flo);
-void	move_down(t_win *pl, void *pla, void *flo);
+void	move_left(t_win *p, void *pla, void *flo);
+void	move_up(t_win *p, void *pla, void *flo);
+void	move_down(t_win *p, void *pla, void *flo);
 char	**mapinit(t_win *pl);
 int		collision(t_win *pl, int d);
-void	check2d(t_win *m, int x, int y, int count);
+void	check2d(t_win *m, int x, int y);
 int		objectnbr(char **tab);
+void	drawmap(char **map, t_win *pl);
+void	destroymap(t_win *m);
+int		maptest(t_win *m);
 
 #endif

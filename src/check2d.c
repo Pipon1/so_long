@@ -11,6 +11,19 @@
 /* ************************************************************************** */
 #include	"../libft/libft.h"
 #include	"../includes/so_long.h"
+#include	<stdlib.h>
+
+void	destroymap(t_win *m)
+{
+	int	i;
+
+	i = 0;
+	while (m->map[i])
+	{
+		free (m->map[i]);
+		i++;
+	}
+}
 
 int	objectnbr(char **tab)
 {
@@ -36,20 +49,13 @@ int	objectnbr(char **tab)
 	return (res);
 }
 
-void	check2d(t_win *m, int x, int y, int count)
+void	check2d(t_win *m, int x, int y)
 {
-	if (count == m->obj)
-	{
-		m->good = 1;
-		return ;
-	}
 	if (m->map[y][x] == '1' || m->map[y][x] == 'Z')
 		return ;
-	if (m->map[y][x] == 'C' || m->map[y][x] == 'E')
-		count += 1;
 	m->map[y][x] = 'Z';
-	check2d(m, x, y - 1, count);
-	check2d(m, x + 1, y, count);
-	check2d(m, x, y + 1, count);
-	check2d(m, x - 1, y, count);
+	check2d(m, x, y - 1);
+	check2d(m, x + 1, y);
+	check2d(m, x, y + 1);
+	check2d(m, x - 1, y);
 }

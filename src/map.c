@@ -54,7 +54,7 @@ void	draw(int x, int y, t_win *pl, int td)
 		pl->chary = y;
 	}
 	else if (td == 4)
-		mlx_put_image_to_window(pl->mlx, pl->win, pl->img->imge, x, y);
+		mlx_put_image_to_window(pl->mlx, pl->win, pl->img->ig, x, y);
 	else if (td == 5)
 		mlx_put_image_to_window(pl->mlx, pl->win, pl->img->imgc, x, y);
 }
@@ -119,15 +119,17 @@ char	**mapinit(t_win *pl)
 		return (0);
 	close(fd);
 	findplayer(pl->map, pl);
-	pl->obj = objectnbr(pl->map);
-	check2d(pl, pl->charx, pl->chary, 0);
+	check2d(pl, pl->charx, pl->chary);
+	if (objectnbr(pl->map) == 0)
+		pl->good = 1;
 	if (pl->good)
 	{
+		destroymap(pl);
+		free (pl->map);
 		fd = open("./map/map.ber", O_RDONLY);
 		pl->map = readmap(fd);
 		if (!pl->map)
 			return (0);
-		drawmap(pl->map, pl);
 		return (pl->map);
 	}
 	return (0);
