@@ -35,6 +35,13 @@ typedef struct s_win
 	t_image	*img;
 }				t_win;
 
+typedef struct s_error
+{
+	int	g1;
+	int	g2;
+	int	g3;
+}				t_error;
+
 void	move_right(t_win *pl, void *pla, void *flo);
 void	move_left(t_win *p, void *pla, void *flo);
 void	move_up(t_win *p, void *pla, void *flo);
