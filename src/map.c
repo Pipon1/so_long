@@ -107,10 +107,8 @@ char	**readmap(int fd)
 	return (map);
 }
 
-char	**mapinit(t_win *pl)
+char	**mapinit(t_win *pl, int fd)
 {
-	int		fd;
-
 	fd = open("./map/map.ber", O_RDONLY);
 	if (fd == -1)
 		return (0);
@@ -118,6 +116,8 @@ char	**mapinit(t_win *pl)
 	if (!pl->map)
 		return (0);
 	close(fd);
+	if (!checkborder(pl, 0, 0, 1))
+		return (0);
 	findplayer(pl->map, pl);
 	check2d(pl, pl->charx, pl->chary);
 	if (objectnbr(pl->map) == 0)

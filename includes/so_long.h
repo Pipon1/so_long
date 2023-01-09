@@ -39,12 +39,14 @@ void	move_right(t_win *pl, void *pla, void *flo);
 void	move_left(t_win *p, void *pla, void *flo);
 void	move_up(t_win *p, void *pla, void *flo);
 void	move_down(t_win *p, void *pla, void *flo);
-char	**mapinit(t_win *pl);
+char	**mapinit(t_win *pl, int fd);
 int		collision(t_win *pl, int d);
 void	check2d(t_win *m, int x, int y);
 int		objectnbr(char **tab);
 void	drawmap(char **map, t_win *pl);
 void	destroymap(t_win *m);
 int		maptest(t_win *m);
+int		checkborder(t_win *m, int size, int len, int good);
+int		ft_close(int keycode, t_win *p);
 
 #endif

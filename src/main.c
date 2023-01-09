@@ -14,6 +14,19 @@
 #include	"../libft/libft.h"
 #include	<stdlib.h>
 
+int	ft_close_2(t_win *p)
+{
+	mlx_destroy_image(p->mlx, p->img->imgp);
+	mlx_destroy_image(p->mlx, p->img->imgf);
+	mlx_destroy_image(p->mlx, p->img->ig);
+	mlx_destroy_image(p->mlx, p->img->imgc);
+	mlx_destroy_image(p->mlx, p->img->imgw);
+	mlx_destroy_window(p->mlx, p->win);
+	destroymap(p);
+	exit (0);
+	return (0);
+}
+
 int	ft_close(int keycode, t_win *p)
 {
 	if (keycode == 53 || (p->map[p->chary / 16][p->charx / 16] == 'E' \
@@ -74,15 +87,15 @@ int	main(void)
 	win.img->imgw = mlx_xpm_file_to_image(win.mlx, "./img/wall.xpm", &w, &h);
 	win.img->ig = mlx_xpm_file_to_image(win.mlx, "./img/exit.xpm", &w, &h);
 	win.img->imgc = mlx_xpm_file_to_image(win.mlx, "./img/coin.xpm", &w, &h);
-	mapinit(&win);
+	mapinit(&win, 0);
 	win.obj = objectnbr(win.map);
 	mapsize(&win);
 	drawmap(win.map, &win);
 	if (!maptest(&win))
 		ft_close(-1, &win);
 	mlx_hook(win.win, 2, 0, ft_close, &win);
+	mlx_hook(win.win, 17, 0, ft_close_2, &win);
 	mlx_key_hook(win.win, ft_move, &win);
 	mlx_loop(win.mlx);
-	pause ();
 	return (0);
 }
