@@ -33,7 +33,7 @@ int	collision(t_win *pl, int d)
 	y /= 16;
 	if (pl->map[y][x] == '1')
 		return (0);
-	if (pl->map[y][x] == 'E')
+	if (pl->map[y][x] == 'E' && pl->obj == 1)
 	{
 		pl->move += 1;
 		ft_printf("%d\n", pl->move);
