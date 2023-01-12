@@ -43,20 +43,20 @@ void	findplayer(char **map, t_win *pl)
 void	draw(int x, int y, t_win *pl, int td)
 {
 	if (td == 1)
-		mlx_put_image_to_window(pl->mlx, pl->win, pl->img->imgf, x, y);
+		mlx_put_image_to_window(pl->mlx, pl->win, pl->img.imgf, x, y);
 	else if (td == 2)
-		mlx_put_image_to_window(pl->mlx, pl->win, pl->img->imgw, x, y);
+		mlx_put_image_to_window(pl->mlx, pl->win, pl->img.imgw, x, y);
 	else if (td == 3)
 	{
-		mlx_put_image_to_window(pl->mlx, pl->win, pl->img->imgf, x, y);
-		mlx_put_image_to_window(pl->mlx, pl->win, pl->img->imgp, x, y);
+		mlx_put_image_to_window(pl->mlx, pl->win, pl->img.imgf, x, y);
+		mlx_put_image_to_window(pl->mlx, pl->win, pl->img.imgp, x, y);
 		pl->charx = x;
 		pl->chary = y;
 	}
 	else if (td == 4)
-		mlx_put_image_to_window(pl->mlx, pl->win, pl->img->ig, x, y);
+		mlx_put_image_to_window(pl->mlx, pl->win, pl->img.ig, x, y);
 	else if (td == 5)
-		mlx_put_image_to_window(pl->mlx, pl->win, pl->img->imgc, x, y);
+		mlx_put_image_to_window(pl->mlx, pl->win, pl->img.imgc, x, y);
 }
 
 void	drawmap(char **map, t_win *pl)
@@ -107,15 +107,16 @@ char	**readmap(int fd)
 	return (map);
 }
 
-char	**mapinit(t_win *pl, int fd)
+char	**mapinit(t_win *pl, int fd, char *path)
 {
-	fd = open("./map/map.ber", O_RDONLY);
+	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		return (0);
 	pl->map = readmap(fd);
 	if (!pl->map)
 		return (0);
 	close(fd);
+	pl->obj = objectnbr(pl->map);
 	if (!checkborder(pl, 0, 0, 1))
 		return (0);
 	findplayer(pl->map, pl);

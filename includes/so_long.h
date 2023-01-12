@@ -32,7 +32,7 @@ typedef struct s_win
 	int		good;
 	int		obj;
 	int		move;
-	t_image	*img;
+	t_image	img;
 }				t_win;
 
 typedef struct s_error
@@ -46,7 +46,7 @@ void	move_right(t_win *pl, void *pla, void *flo);
 void	move_left(t_win *p, void *pla, void *flo);
 void	move_up(t_win *p, void *pla, void *flo);
 void	move_down(t_win *p, void *pla, void *flo);
-char	**mapinit(t_win *pl, int fd);
+char	**mapinit(t_win *pl, int fd, char *path);
 int		collision(t_win *pl, int d);
 void	check2d(t_win *m, int x, int y);
 int		objectnbr(char **tab);
@@ -55,5 +55,10 @@ void	destroymap(t_win *m);
 int		maptest(t_win *m);
 int		checkborder(t_win *m, int size, int len, int good);
 int		ft_close(int keycode, t_win *p);
+t_win	varini(void);
+int		errorcheck(int er);
+int		checkline(int size, int len, t_win *m);
+int		charcheck(int size, int len, t_win *m);
+int		duplicate(int size, int len, t_win *m);
 
 #endif

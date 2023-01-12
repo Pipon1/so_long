@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 #include	"../includes/so_long.h"
 #include	"../libft/libft.h"
+#include	<mlx.h>
 
 int	testobj(int size, int len, t_win *m, t_error *er)
 {
@@ -91,7 +92,7 @@ int	maptest(t_win *m)
 	writen = 0;
 	while (m->map[len])
 		len++;
-	if (len == size)
+	if (!checkline(size, len, m))
 		writen = ft_printf("Error\nLa map n'est pas rectangulaire !\n");
 	else if (!checkborder(m, 0, 0, 1))
 		writen = ft_printf("Error\nLa bordure n'est pas composé de murs !\n");
@@ -99,6 +100,10 @@ int	maptest(t_win *m)
 		writen = ft_printf("Error\nAucun chemin trouvé !\n");
 	else if (!obj_isgood(m, size, len))
 		writen = ft_printf("Error\nIl manque un ou plusieurs objets !\n");
+	else if (!charcheck(size, len, m))
+		writen = ft_printf("Error\nCharactères interdit trouvés !\n");
+	else if (!duplicate(size, len, m))
+		writen = ft_printf("Error\nMultiple occurence du même charactère!\n");
 	if (writen != 0)
 		return (0);
 	return (1);

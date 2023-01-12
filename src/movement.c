@@ -33,6 +33,12 @@ int	collision(t_win *pl, int d)
 	y /= 16;
 	if (pl->map[y][x] == '1')
 		return (0);
+	if (pl->map[y][x] == 'E')
+	{
+		pl->move += 1;
+		ft_printf("%d\n", pl->move);
+		ft_close(-1, pl);
+	}
 	return (1);
 }
 
@@ -41,7 +47,7 @@ void	move_right(t_win *p, void *pla, void *flo)
 	if (p->map[p->chary / 16][p->charx / 16] != 'E')
 		mlx_put_image_to_window(p->mlx, p->win, flo, p->charx, p->chary);
 	else
-		mlx_put_image_to_window(p->mlx, p->win, p->img->ig, p->charx, p->chary);
+		mlx_put_image_to_window(p->mlx, p->win, p->img.ig, p->charx, p->chary);
 	p->charx += 16;
 	p->move += 1;
 	ft_printf("%d\n", p->move);
@@ -58,7 +64,7 @@ void	move_left(t_win *p, void *pla, void *flo)
 	if (p->map[p->chary / 16][p->charx / 16] != 'E')
 		mlx_put_image_to_window(p->mlx, p->win, flo, p->charx, p->chary);
 	else
-		mlx_put_image_to_window(p->mlx, p->win, p->img->ig, p->charx, p->chary);
+		mlx_put_image_to_window(p->mlx, p->win, p->img.ig, p->charx, p->chary);
 	p->charx -= 16;
 	p->move += 1;
 	ft_printf("%d\n", p->move);
@@ -75,7 +81,7 @@ void	move_up(t_win *p, void *pla, void *flo)
 	if (p->map[p->chary / 16][p->charx / 16] != 'E')
 		mlx_put_image_to_window(p->mlx, p->win, flo, p->charx, p->chary);
 	else
-		mlx_put_image_to_window(p->mlx, p->win, p->img->ig, p->charx, p->chary);
+		mlx_put_image_to_window(p->mlx, p->win, p->img.ig, p->charx, p->chary);
 	p->chary -= 16;
 	p->move += 1;
 	ft_printf("%d\n", p->move);
@@ -92,7 +98,7 @@ void	move_down(t_win *p, void *pla, void *flo)
 	if (p->map[p->chary / 16][p->charx / 16] != 'E')
 		mlx_put_image_to_window(p->mlx, p->win, flo, p->charx, p->chary);
 	else
-		mlx_put_image_to_window(p->mlx, p->win, p->img->ig, p->charx, p->chary);
+		mlx_put_image_to_window(p->mlx, p->win, p->img.ig, p->charx, p->chary);
 	p->chary += 16;
 	p->move += 1;
 	ft_printf("%d\n", p->move);
