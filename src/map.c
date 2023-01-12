@@ -6,7 +6,7 @@
 /*   By: hefurrer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 10:27:58 by hefurrer          #+#    #+#             */
-/*   Updated: 2022/12/15 10:28:01 by hefurrer         ###   ########.fr       */
+/*   Updated: 2023/01/12 09:42:28 by hefurrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include	<mlx.h>
@@ -127,7 +127,7 @@ char	**mapinit(t_win *pl, int fd, char *path)
 	{
 		destroymap(pl);
 		free (pl->map);
-		fd = open("./map/map.ber", O_RDONLY);
+		fd = open(path, O_RDONLY);
 		pl->map = readmap(fd);
 		if (!pl->map)
 			return (0);
