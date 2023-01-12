@@ -129,9 +129,7 @@ char	**mapinit(t_win *pl, int fd)
 		free (pl->map);
 		fd = open(pl->path, O_RDONLY);
 		pl->map = readmap(fd);
-		if (!pl->map)
-			return (0);
 		return (pl->map);
 	}
-	return (0);
+	return (pl->map);
 }
