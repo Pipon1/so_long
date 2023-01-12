@@ -12,11 +12,16 @@
 #include	"../libft/libft.h"
 #include	"../includes/so_long.h"
 
-int	errorcheck(int er)
+int	errorcheck(int er, t_win *w)
 {
 	if (er != 2)
 	{
 		ft_printf("Error\nParamètres non valide !\n");
+		return (0);
+	}
+	if (!checkname(w))
+	{
+		ft_printf("Error\nExtensions non valide !\n");
 		return (0);
 	}
 	return (1);

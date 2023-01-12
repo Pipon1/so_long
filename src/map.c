@@ -107,9 +107,9 @@ char	**readmap(int fd)
 	return (map);
 }
 
-char	**mapinit(t_win *pl, int fd, char *path)
+char	**mapinit(t_win *pl, int fd)
 {
-	fd = open(path, O_RDONLY);
+	fd = open(pl->path, O_RDONLY);
 	if (fd == -1)
 		return (0);
 	pl->map = readmap(fd);
@@ -127,7 +127,7 @@ char	**mapinit(t_win *pl, int fd, char *path)
 	{
 		destroymap(pl);
 		free (pl->map);
-		fd = open(path, O_RDONLY);
+		fd = open(pl->path, O_RDONLY);
 		pl->map = readmap(fd);
 		if (!pl->map)
 			return (0);

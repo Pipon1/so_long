@@ -13,7 +13,7 @@
 #include	"../includes/so_long.h"
 #include	"../libft/libft.h"
 
-t_win	varini(void)
+t_win	varini(char *path)
 {
 	t_win	win;
 	int		h;
@@ -30,5 +30,17 @@ t_win	varini(void)
 	win.img.imgw = mlx_xpm_file_to_image(win.mlx, "./img/wall.xpm", &w, &h);
 	win.img.ig = mlx_xpm_file_to_image(win.mlx, "./img/exit.xpm", &w, &h);
 	win.img.imgc = mlx_xpm_file_to_image(win.mlx, "./img/coin.xpm", &w, &h);
+	win.path = path;
 	return (win);
+}
+
+int	checkname(t_win *w)
+{
+	int	i;
+
+	i = (int)ft_strlen(w->path);
+	if (w->path[i - 4] == '.' && w->path[i - 3] == 'b' && \
+	w->path[i - 2] == 'e' && w->path[i - 1] == 'r')
+		return (1);
+	return (0);
 }

@@ -78,10 +78,10 @@ int	main(int ac, char **av)
 {
 	t_win	win;
 
-	win = varini();
-	if (!errorcheck(ac))
+	win = varini(av[1]);
+	if (!errorcheck(ac, &win))
 		ft_close_2(&win);
-	mapinit(&win, 0, av[1]);
+	mapinit(&win, 0);
 	mapsize(&win);
 	drawmap(win.map, &win);
 	if (!maptest(&win))
